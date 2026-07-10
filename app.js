@@ -454,4 +454,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     };
 
+
+    // --- 10. Safety Advisory Language Selector Switcher ---
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const marathiAdvisory = document.getElementById('marathi-advisory');
+    const englishAdvisory = document.getElementById('english-advisory');
+
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            langButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const lang = btn.getAttribute('data-lang');
+            if (lang === 'marathi') {
+                marathiAdvisory.classList.remove('hidden');
+                englishAdvisory.classList.add('hidden');
+            } else if (lang === 'english') {
+                marathiAdvisory.classList.add('hidden');
+                englishAdvisory.classList.remove('hidden');
+            }
+        });
+    });
+
 });
